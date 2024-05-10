@@ -1,8 +1,6 @@
 1- Crear tag llamado Battery y otro llamado Taser.
-2- Añadir componentes BatteryObtainer y TaserShot al jugador. Configurar. Usar como prefab el prefab TaserShot.
-3- Añadir nuevo input a lista de inputs. Añadir evento del nuevo input que llame a TaserShot.Shot.
-4- Añadir a escena el prefab BatteryConfig.
-5- Añadir el componente BatteryInfo al prefab PlayerInfo. Crear un texto para la batería y asignar en BatteryInfo.
-6- Añadir el componente PlayerBatteryManager al objeto PlayersInfo. Asignar componentes BatteryInfo en PlayerBatteryManager EN ORDEN.
-7- Configurar TaserSpeedMultiplier en el componente Movement del prefab Player.
-8- Configurar el prefab TaserShot. Poner arte propio y cambiar componente TaserMovement.
+2- Añadir a escena el prefab BatteryConfig.
+3- Configurar componente Movement del prefab Player.
+4- Configurar componente TaserShot del prefab Player.
+5- Configurar componente TaserMovement del prefab TaserShot.
+6- Configurar todo lo de BatteryConfig (posición de las pilas, cantidad, cada cuanto aparecen...)

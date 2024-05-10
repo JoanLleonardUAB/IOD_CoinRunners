@@ -9,10 +9,17 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Tooltip("The speed (in m/s) at which the players will move")]
     private float _speed = 1f;
+    [SerializeField]
+    private float _taserSpeedMultiplier = 0.5f;
+
 
     private Animator _animator;
 
     Vector2 _direction;
+    private float _taserDuration;
+    private float _lastTasered = 0f;
+    private float _stopDuration;
+    private float _lastStopped = 0f;
 
     public void Start()
     {
@@ -59,7 +66,12 @@ public class Movement : MonoBehaviour
     // Then rotate to the direction
     private void FixedUpdate()
     {
+        if (Time.time - _lastStopped < _stopDuration)
+        {
+            return;
+        }
         Vector3 v3Direction = new Vector3(_direction.x, 0f, _direction.y);
+        if (Time.time - _lastTasered < _taserDuration) v3Direction = v3Direction * _taserSpeedMultiplier;
         _rigidBody.MovePosition(transform.position + v3Direction * _speed * Time.fixedDeltaTime);
         var lookat = transform.position + v3Direction;
         transform.LookAt(lookat);
@@ -72,9 +84,28 @@ public class Movement : MonoBehaviour
 
         if (_animator != null)
         {
-            _animator.SetFloat("Speed", _direction.magnitude);
+            if (Time.time - _lastStopped < _stopDuration)
+            {
+                _animator.SetFloat("Speed", 0f);
+            }
+            else
+            {
+                _animator.SetFloat("Speed", _direction.magnitude);
+            }
             _animator.SetFloat("SpeedY", _rigidBody.velocity.y);
             _animator.SetBool("Grounded", grounded);
         }
+    }
+
+    public void GetTasered(float time)
+    {
+        _lastTasered = Time.time;
+        _taserDuration = time;
+    }
+
+    public void Stop(float time)
+    {
+        _lastStopped = Time.time;
+        _stopDuration = time;
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - Fall
+  - Battery
+  - Taser
   layers:
   - Default
   - TransparentFX

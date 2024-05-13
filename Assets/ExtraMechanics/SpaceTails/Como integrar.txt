@@ -1,0 +1,3 @@
+- PlayerInfo.cs tiene una lista en vez de un unico texto
+- Coin behaviour tiene un tipo de material
+- Prefab base

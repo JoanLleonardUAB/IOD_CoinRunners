@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class CountSystem : MonoBehaviour
 {
+    public static CountSystem Instance;
+
     [SerializeField]
     [Tooltip("The camera that will follow the winner")]
     private CinemachineVirtualCamera _virtualCamera;
@@ -17,6 +19,10 @@ public class CountSystem : MonoBehaviour
     [SerializeField]
     [Tooltip("The game object that will always activate to allow the player to exit or replay")]
     private GameObject _replayUI;
+    [SerializeField]
+    private int[] _maxPerCoin;
+
+    public int[] MaxPerCoin => _maxPerCoin;
 
 
     private List<GameObject> _playerList = new List<GameObject>();
@@ -27,6 +33,7 @@ public class CountSystem : MonoBehaviour
         _tieUIObject.SetActive(false);
         _replayUI.SetActive(false);
         _virtualCamera.Priority = 0;
+        Instance = this;
     }
 
     private void OnEnable()
@@ -39,44 +46,50 @@ public class CountSystem : MonoBehaviour
     {
         PlayerJoinNotifier.OnPlayerJoins -= OnPlayerJoined;
         GameTimer.OnTimerEnded -= OnTimerEnded;
+        foreach(var player in _playerList)
+        {
+            player.GetComponent<CoinObtainer>().OnCoinObtained -= OnCoinObtained;
+        }
     }
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
         _playerList.Add(playerInput.gameObject);
+        playerInput.gameObject.GetComponent<CoinObtainer>().OnCoinObtained += OnCoinObtained;
+    }
+
+    private void OnCoinObtained(int[] coins, CoinBehaviour.MaterialType _)
+    {
+        if (PlayerWon() != -1)
+        {
+            OnTimerEnded();
+        }
+    }
+
+    private int PlayerWon()
+    {
+        for (int i = 0; i < _playerList.Count; ++i)
+        {
+            CoinObtainer co = _playerList[i].GetComponent<CoinObtainer>();
+            if (co.Coins[0] >= 3 && co.Coins[1] >= 2 && co.Coins[2] >= 1)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private void OnTimerEnded()
     {
-        int max = -1;
-        bool tie = true;
-        GameObject current = null;
-        for(int i = 0; i < _playerList.Count; ++i)
-        {
-            CoinObtainer co = _playerList[i].GetComponent<CoinObtainer>();
-            if (co.Coins > max)
-            {
-                tie = false;
-                max = co.Coins;
-                current = _playerList[i];
-            } else if (co.Coins == max)
-            {
-                tie = true;
-                current = null;
-            }
-        }
+        var wonIndex = PlayerWon();
+        
+        GameObject current = _playerList[wonIndex];
 
-        if (tie)
-        {
-            _tieUIObject.SetActive(true);
-        } else
-        {
-            _virtualCamera.Follow = current.transform;
-            _virtualCamera.LookAt = current.transform;
-            _virtualCamera.Priority = 50;
-            _winnerUIObject.SetActive(true);
-            current.GetComponentInChildren<Animator>().SetTrigger("Victory");
-        }
+        _virtualCamera.Follow = current.transform;
+        _virtualCamera.LookAt = current.transform;
+        _virtualCamera.Priority = 50;
+        _winnerUIObject.SetActive(true);
+        current.GetComponentInChildren<Animator>().SetTrigger("Victory");
         _replayUI.SetActive(true);
     }
 }

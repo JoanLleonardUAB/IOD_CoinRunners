@@ -17,6 +17,9 @@ public class BaseConstruction : MonoBehaviour
     [SerializeField]
     private float _upgradeWaitTime = 0.5f;
 
+    [SerializeField]
+    private AudioSource _constructionSound;
+
     private int _state = 0;
 
     private void Start()
@@ -60,6 +63,7 @@ public class BaseConstruction : MonoBehaviour
         {
             _baseSteps[i].SetActive(false);
         }
+        if (_constructionSound != null) _constructionSound.Play();
         _baseSteps[_state].SetActive(true);
         _effect.Pause(true);
     }

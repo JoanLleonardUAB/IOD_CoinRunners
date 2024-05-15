@@ -1,0 +1,5 @@
+- Ir al prefab coin. El componente Coin Behaviour tiene ahora el campo "Value" que indica cuantos puntos da.
+- También en Coin Behaviour hay "Min Max Time To Disappear". El topo desaparecer en una cantidad aleatoria de segundos entre los dos números que pongáis.
+- Coin tiene ahora un Animator. Cuando tengáis los topos integrados, podéis usarlo para hacer que aparezcan y se escondan. Solo hace falta aplicar animaciones a los estados del animator. Si no planeábais hacer animaciones para los topos en blender, podéis hacer animaciones sencillas en unity para que aparezcan o desaparezcan, ya os enseñaré.
+- El prefab Player tiene ahora un componente "MalletHit". En él podéis editar cada cuanto se puede golpear (Hit Delay, en segundos), el radio del impacto (Hit Radius, en metros) y podéis asignarle un prefab que aparecerá y desaparecerá en MalletHitEffectPrefab (esto es útil para tener una idea clara de dónde se está realizando el impacto, pero no es obligatorio)
+- En el prefab player hay un nuevo objeto hijo de player llamado MalletHit. Este es el punto en el cual ocurrirá el impacto y desde el cual se contará el radio.

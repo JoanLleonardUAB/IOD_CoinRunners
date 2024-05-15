@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CoinSpawnManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class CoinSpawnManager : MonoBehaviour
     [SerializeField]
     [Tooltip("How much time will pass between coin spawns?")]
     private float _timeBetweenSpawns = 3f;
+    [SerializeField]
+    private float _timeToReturn = 3f;
 
     private List<Transform> _coinSpawnPositions;
 
@@ -97,9 +100,10 @@ public class CoinSpawnManager : MonoBehaviour
         coinBehaviour.OnCoinGot += OnCoinGot;
     }
 
-    private void OnCoinGot(CoinBehaviour coinBehaviour)
+    private async void OnCoinGot(CoinBehaviour coinBehaviour)
     {
         coinBehaviour.OnCoinGot -= OnCoinGot;
+        await Task.Delay((int)(_timeToReturn * 1000));
         ReturnTransformToPool(coinBehaviour.SpawnReference);
         _coinsPool.ReturnToPool(coinBehaviour.gameObject);
     }

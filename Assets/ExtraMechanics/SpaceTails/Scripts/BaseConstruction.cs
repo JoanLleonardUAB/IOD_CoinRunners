@@ -39,7 +39,10 @@ public class BaseConstruction : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
-        playerInput.gameObject.GetComponent<CoinObtainer>().OnCoinObtained += OnCoinObtained;
+        if (playerInput.playerIndex == _playerSlot)
+        {
+            playerInput.gameObject.GetComponent<CoinObtainer>().OnCoinObtained += OnCoinObtained;
+        }
     }
 
     private void OnCoinObtained(int[] obj, CoinBehaviour.MaterialType material)

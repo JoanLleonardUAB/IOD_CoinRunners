@@ -1,3 +1,12 @@
-- PlayerInfo.cs tiene una lista en vez de un unico texto
-- Coin behaviour tiene un tipo de material
-- Prefab base
+Antes de nada, todas las referencias que veáis a "monedas" son realmente materiales. A los materiales los he llamado A, B y C dentro del código.
+
+- En la escena, ir a --- OTHER CONFIGURATION ---, CountSystem. Aparece una lista vacía (con 0 elementos) llamada "Max Per Coin". Añadir 3 elementos a la lista con las cantidades necesarias de cada material (el primero es el material A, el segundo el B, y el tercero el C).
+- Arrastrar el prefab "Base" dentro de "ExtraMechanics/SpaceTails/Prefabs" a la escena por cada jugador y colocar en el lugar adecuado. La base cambiará automáticamente cuando el jugador consiga materiales.
+- Para cada base dentro de la escena, en el componente Base Construction, cambiar el valor "Player Slot" para que sea el mismo que el índice del jugador que deba recoger los materiales. Tendréis una base con 0, otra con 1, otra con 2... dependiendo de la cantidad de personajes.
+- En el prefab Base, modificar Model1, Model2, Model3 y Model4 para que tengan los modelos de la base en cada paso de la construcción. Modificar Particle System para dar el efecto que se quiera.
+- En las bases dentro de la escena se pueden modificar los Model1, 2, 3 y 4 o sus materiales para adaptarlos al código de color de cada jugador.
+- La UI es feísima, pero ahora muestra 3 valores. De arriba a abajo son Material A, Material B y Material C.
+- Se puede añadir un sonido a la construcción de la base en el componente Base Construction. También cuanto tiempo pasa (Upgrade Wait Time) entre el efecto de partículas y el cambio de modelo.
+
+
+No esperéis a última hora para integrar esto, es importante que lo probéis!

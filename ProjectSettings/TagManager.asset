@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Fall
+  - Sickle
   layers:
   - Default
   - TransparentFX

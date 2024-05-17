@@ -6,6 +6,11 @@ public class CoinObtainer : MonoBehaviour
     [SerializeField]
     [Tooltip("The audio source with the coin sound")]
     private AudioSource _coinAudio;
+    [SerializeField]
+    [Tooltip("The audio source with the coin lost sound")]
+    private AudioSource _coinLossAudio;
+    [SerializeField]
+    private ParticleSystem _coinLossEffect;
 
     public Action<int> OnCoinObtained;
     private int _coins = 0;
@@ -26,5 +31,15 @@ public class CoinObtainer : MonoBehaviour
             coinBehaviour.CoinGot();
             if (_coinAudio != null) _coinAudio.Play();
         }
+    }
+
+    public void LoseCoins(int amount)
+    {
+        if (_coins == 0) return;
+        _coins -= amount;
+        _coins = System.Math.Max(_coins, 0);
+        if (_coinLossAudio != null) _coinLossAudio.Play();
+        OnCoinObtained?.Invoke(_coins);
+        if (_coinLossEffect != null) _coinLossEffect.Play();
     }
 }

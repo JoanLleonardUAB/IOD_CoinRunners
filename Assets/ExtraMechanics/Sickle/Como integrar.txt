@@ -1,0 +1,16 @@
+Verás que la hoz usa scripts que usan también las coins, pero no te preocupes, es para reutilizar el mismo sistema.
+Para golpear con la hoz pulsa Espacio o A en un mando.
+
+- Arrastra el prefab "SickleSpawn" en tu escena. Está en ExtraMechanics/Sickle/Prefabs.
+- Añade un objeto a SickleSpawnPositions por cada punto en que quieras que pueda aparecer la hoz. La posición en que estén será en la que aparecerán (igual que las monedas).
+- En SickleSpawnPositions modifica CoinSpawnManager, concretamente el valor TImeBetweenSpawns. Esto es cuánto tarda en aparecer una hoz nueva después de que un jugador obtenga la hoz.
+- Modifica el prefab Sickle. Está en ExtraMechanics/Sickle/Prefabs. Cambia el modelo por el de una hoz y puedes editar el Box Collider.
+- Modifica el prefab Player (está en 03. Prefabs/Gameplay). Aquí hay varias cosas por cambiar:
+	- Un objeto dentro de Player, CoinLossEffect, es el efecto de partículas que se ejecuta cuando pierdes coins por un golpe de hoz. Modifícalo al gusto.
+	- El componente CoinObtainer puede contener ahora un audio de perder monedas.
+	- El componente SickleObtainer puede tener un sonido de cuando obtienes la hoz. Modifica también la duración del efecto.
+	- El componente SickleHit tiene toda la configuración de golpear con la Hoz. Hit delay es cada cuanto puedes pegar, Min Angle maneja el ángulo en el que debes estar respecto al otro jugador y Max Distance la distancia a la que puedes estar del otro jugador. Force maneja cuánto se impulsa hacia atrás el otro jugador y Loss Amount cuantas monedas pierde.
+	
+- Otras cosas:
+	- Al golpear con la hoz se lanza un trigger del animator llamado "Sickle". Puedes asignar la animación que veas conveniente a ese trigger. En clase te puedo ayudar a configurar layers del animator para que solo la parte de arriba se mueva. Sea como sea, te recomiendo que la animación solo contenga keyframes de la parte de arriba del cuerpo para realizar esto.
+	- Añade el componente "SickleObject" a cualquier objeto dentro del modelo de tu personaje (la hoz en este caso). En cuanto la partida empiece, ocultará dicho objeto, cuando el jugador obtenga la hoz, lo hará aparecer, y cuando se gaste la hoz, lo hará desaparecer de nuevo.

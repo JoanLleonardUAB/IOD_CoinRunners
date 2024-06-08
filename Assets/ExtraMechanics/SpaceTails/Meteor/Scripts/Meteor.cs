@@ -3,6 +3,9 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     [SerializeField]
+    private CoinBehaviour _coinBehaviour;
+
+    [SerializeField]
     private float _speed;
 
     [SerializeField]
@@ -16,6 +19,7 @@ public class Meteor : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!GameTimer.instance.GameRunning) _coinBehaviour.CoinGot();
         var pos = transform.position;
         pos.y = _startingYPosition;
         transform.position = pos;
@@ -33,8 +37,7 @@ public class Meteor : MonoBehaviour
             pos.y = _yPositionToExplode;
             go.transform.position = pos;
 
-            CoinBehaviour cb = GetComponent<CoinBehaviour>();
-            cb.CoinGot();
+            _coinBehaviour.CoinGot();
         }
     }
 }

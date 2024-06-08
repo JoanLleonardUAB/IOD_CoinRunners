@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5054dffcd53994f8507cd470e86001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinBehaviour: {fileID: 7458283812974929337}
   _speed: 5
   _startingYPosition: 20
   _yPositionToExplode: -2

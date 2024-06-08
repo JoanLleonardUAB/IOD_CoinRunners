@@ -1,0 +1,7 @@
+1. Arrastrar el prefab "MeteorSystem" a la escena.
+2. Modificar la posición de cada MeteorSpawnPosition dentro de MeteorSpawnPositions. Esto determinará donde puede aparecer el meteorito.
+3. Configurar en MeteorSpawnPositions el componente CoinSpawnManager como deseéis. Si queréis que solo pueda aparecer un meteorito a la vez cambiad solo Time Betweeen Spawns.
+4. Modificar al gusto el prefab Meteor. Cambiadle el modelo y material. Buscar buenos números para el componente Meteor. Tenéis la velocidad a la que cae, la altura a la que empieza y a que altura explota. No hace falta tocar Coin Behaviour.
+5. Dentro de Meteor hay un "Decal Projector". Modificad el material poniendo la textura que deseéis. Esto es el sprite que se ve en el suelo.
+6. Modificad al gusto el prefab ExplosionEffect. Poned un sistema de partículas decente, podéis poner un sonido en el AudioSource (sonará cuando el meteorito choque) y podéis cambiar el radio de efecto de la explosión y el tiempo de stun en el componente Explosion.
+7. Añadid a vuestros Animators un parámetro de tipo trigger llamado "Stun", y editad los animators como veais conveniente para que los personajes cambien a la animación de stun con ese parámetro.

@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
 
     Vector2 _direction;
 
+    private float _stunTimer = 0f;
+
     public void Start()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -59,6 +61,7 @@ public class Movement : MonoBehaviour
     // Then rotate to the direction
     private void FixedUpdate()
     {
+        if (_stunTimer > 0f) return;
         Vector3 v3Direction = new Vector3(_direction.x, 0f, _direction.y);
         _rigidBody.MovePosition(transform.position + v3Direction * _speed * Time.fixedDeltaTime);
         var lookat = transform.position + v3Direction;
@@ -68,6 +71,11 @@ public class Movement : MonoBehaviour
     // Each frame send data to the animator depending on the desired direction and the vertical velocity
     private void Update()
     {
+        if (_stunTimer > 0f)
+        {
+            _stunTimer -= Time.deltaTime;
+            return;
+        }
         bool grounded = Physics.Raycast(transform.position, Vector3.down, 2f);
 
         if (_animator != null)
@@ -76,5 +84,11 @@ public class Movement : MonoBehaviour
             _animator.SetFloat("SpeedY", _rigidBody.velocity.y);
             _animator.SetBool("Grounded", grounded);
         }
+    }
+
+    public void Stun(float time)
+    {
+        _stunTimer = time;
+        _animator.SetTrigger("Stun");
     }
 }

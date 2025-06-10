@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f1890ccdca64de14d92a9b0df39929dc, type: 3}
@@ -53,9 +54,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1890ccdca64de14d92a9b0df39929dc, type: 3}
       propertyPath: m_Name
-      value: X Bot
+      value: X Bot Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1890ccdca64de14d92a9b0df39929dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4204426465184187974}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1890ccdca64de14d92a9b0df39929dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2403568225446527419}
   m_SourcePrefab: {fileID: 100100000, guid: f1890ccdca64de14d92a9b0df39929dc, type: 3}
 --- !u!1 &5054628684039633029 stripped
 GameObject:
@@ -82,3 +92,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2403568225446527419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054628684039633029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e876c9942b658aa4ca2d27ad70475474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsData: {fileID: 11400000, guid: 6f9300fc8d2e51943bb5512c30388e65, type: 2}
+  healthMultiplier: 20
+  damageMultiplier: 10
+  knockbackMultiplier: 2
+  moveSpeedMultiplier: 10

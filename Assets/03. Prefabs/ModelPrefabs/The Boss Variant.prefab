@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e4e60a20b8961fe47bea08e21e09ef72, type: 3}
@@ -56,6 +57,15 @@ PrefabInstance:
       value: The Boss Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4e60a20b8961fe47bea08e21e09ef72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3557692975350045813}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4e60a20b8961fe47bea08e21e09ef72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7486692267498238607}
   m_SourcePrefab: {fileID: 100100000, guid: e4e60a20b8961fe47bea08e21e09ef72, type: 3}
 --- !u!1 &5207098023798098211 stripped
 GameObject:
@@ -82,3 +92,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7486692267498238607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207098023798098211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e876c9942b658aa4ca2d27ad70475474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsData: {fileID: 11400000, guid: 6f9300fc8d2e51943bb5512c30388e65, type: 2}
+  healthMultiplier: 20
+  damageMultiplier: 10
+  knockbackMultiplier: 1
+  moveSpeedMultiplier: 10

@@ -9,6 +9,11 @@ public class CoinBehaviour : MonoBehaviour
 
     public Transform SpawnReference => _spawnReference;
 
+    // Add coin ID
+    [SerializeField]
+    private int _coinId;
+    public int CoinId => _coinId;
+
     public void SetSpawnReference(Transform reference)
     {
         _spawnReference = reference;

@@ -114,6 +114,11 @@ MonoBehaviour:
   _coinAudio: {fileID: 5821040610727002341}
   differentCoins: 3
   maxCoinsToGet: 5
+  scoreMarker: {fileID: 0}
+  coinMarkerPrefabs:
+  - {fileID: 2690801206815062533, guid: 066090d77d7232f4cb0265db55579221, type: 3}
+  - {fileID: 2690801206815062533, guid: c94a5af53f34ab742acd504823c69a33, type: 3}
+  - {fileID: 2690801206815062533, guid: 364ae07240f599c4fabb0e127022248b, type: 3}
 --- !u!114 &5595846625034703160
 MonoBehaviour:
   m_ObjectHideFlags: 0

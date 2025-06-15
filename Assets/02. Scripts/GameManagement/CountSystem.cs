@@ -79,4 +79,5 @@ public class CountSystem : MonoBehaviour
         }
         _replayUI.SetActive(true);
     }
+    
 }

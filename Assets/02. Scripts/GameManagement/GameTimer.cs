@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameTimer : MonoBehaviour
@@ -9,6 +9,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField]
     [Tooltip("How much time (in seconds) will the game last?")]
     private float _gameDuration = 60f;
+
     [SerializeField]
     [Tooltip("How much time (in seconds) will the preparation phase (players joining) last")]
     private float _preparationDuration = 5f;
@@ -61,7 +62,8 @@ public class GameTimer : MonoBehaviour
                 _running = false;
                 OnTimerEnded?.Invoke();
             }
-        } else if (_preparationRunning)
+        }
+        else if (_preparationRunning)
         {
             _timer -= Time.deltaTime;
             if (_timer <= 0f)
@@ -71,6 +73,16 @@ public class GameTimer : MonoBehaviour
                 OnPreparationEnded?.Invoke();
                 _timer = _gameDuration;
             }
+        }
+    }
+
+    public void ForceEnd()
+    {
+        if (_running)
+        {
+            _timer = 0f;
+            _running = false;
+            OnTimerEnded?.Invoke();
         }
     }
 }

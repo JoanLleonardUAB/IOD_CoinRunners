@@ -22,6 +22,10 @@ public class CoinSpawnManager : MonoBehaviour
 
     private List<Transform> _coinSpawnPositions;
 
+    [Tooltip("Animator del gato que se usa para spawnear las monedas")]
+    [SerializeField]
+    private Animator _catAnimator;
+
     private void Awake()
     {
         _coinSpawnPositions = new List<Transform>();
@@ -86,6 +90,7 @@ public class CoinSpawnManager : MonoBehaviour
 
     private void SpawnCoin()
     {
+        //_catAnimator.SetTrigger("SpawnCoin");
         Transform t = GetSpawnPosition();
         if (t == null)
             return;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Fall
+  - DeliveryZone
   layers:
   - Default
   - TransparentFX

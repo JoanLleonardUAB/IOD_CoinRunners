@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "IOD_CoinRunners.sln"
+    "dotnet.defaultSolution": "IOD_GRUP2.sln"
 }
